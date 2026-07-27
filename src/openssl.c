@@ -7314,7 +7314,7 @@ static int xc_getPublicKeyDigest(lua_State *L) {
 	md = auxL_optdigest(L, 2, key, NULL);
 	bitstr = X509_get0_pubkey_bitstr(crt);
 
-	if (!EVP_Digest(bitstr->data, bitstr->length, digest, &len, md, NULL))
+	if (!EVP_Digest(ASN1_STRING_get0_data(bitstr), ASN1_STRING_length(bitstr), digest, &len, md, NULL))
 		return auxL_error(L, auxL_EOPENSSL, "x509.cert:getPublicKeyDigest");
 	lua_pushlstring(L, (char *)digest, len);
 
