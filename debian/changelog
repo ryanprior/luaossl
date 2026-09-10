@@ -1,3 +1,10 @@
+liblua-openssl (20260910-0) unstable; urgency=low
+
+  * avoid accessing ASN1 members directly (#220)
+  * add Lua 5.5 support
+
+-- Daurnimator <quae@daurnimator.com>  Thu, 10 Sep 2026 14:51:30 +1000
+
 liblua-openssl (20250929-0) unstable; urgency=low
 
   * fix SSL_OP_NO_RENEGOTIATION (#205)
