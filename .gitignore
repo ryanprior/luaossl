@@ -8,3 +8,6 @@ doc/*.idx
 doc/*.log
 doc/*.toc
 doc/*.out
+/.zig-cache/
+/zig-out/
+/zig-pkg/
