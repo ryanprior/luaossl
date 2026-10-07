@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -eu
+
+: 'normalize-lua-filenames - rename lua files in src/ to reflect the target
+                           directory layout.'
+
+find src -type f -name 'openssl.*.lua' -print \
+    | while IFS= read -r file; do
+    name=${file#"src/"}
+    module=${name%.lua}
+    module="$(tr '.' '/' <<<${module#openssl.})"
+    dest_dir="$(dirname src/openssl/$module)"
+    dest_name="$(basename $module).lua"
+
+    mkdir -p "$dest_dir"
+    mv $file "$dest_dir/$dest_name"
+done
